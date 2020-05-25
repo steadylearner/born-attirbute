@@ -1,4 +1,7 @@
-#[macro_use] extern crate born_attribute;
+// Move this to unit test and more heavier example here later.
+// cargo test pass -- --nocapture
+
+use born_attribute::{no_field, user_base, message_base};
 
 #[no_field]
 #[derive(Debug)]
@@ -17,7 +20,8 @@ struct MessageCreateRequest {
     to: String
 }
 
-fn main() {
+#[test]
+fn pass_public_struct() {
     let no_field = NoField {
         useful: false,
     };
@@ -29,7 +33,7 @@ fn main() {
     };
 
     let message_create_request = MessageCreateRequest {
-        text: "You can do the same with functional macros from the crate I will publish.".into(),
+        text: "You can do the same thing with functional macros from born.".into(),
         from: user.name,
         to: "Rust developers".into(),
     };
